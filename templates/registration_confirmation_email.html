@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Confirmation</title>
+    <link rel="icon" href="{%static 'assets/images/favicon.png'%}" type="image/x-icon">
+    <link rel="icon" href="{%static 'favicon.png' %}">
+</head>
+
+<body>
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <h2>Registration Confirmed!</h2>
+    <p>Thank you for Registering.</p>
+    <p>Your Registration details are as follows:</p>
+    <strong>Name:</strong> {{ register.leaderName }}<br>
+    <strong>Email:</strong> {{ register.email }}<br>
+    <strong>Mobile Number:</strong> {{ register.mobileNumber }}
+</body>
+
+</html>

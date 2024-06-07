@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="{%static 'js/script.js' %}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="icon" href="{%static 'favicon.png' %}">
+    <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+    <title>Registrations</title>
+    <style>
+        body {
+            background-image: url('{%static ' images/bg4.webp' %}');
+            background-repeat: no-repeat;
+            font-family: 'Arial', Roboto;
+
+        }
+
+        h2 {
+            color: #000;
+            position: absolute;
+            top: 2cm;
+        }
+
+        table {
+            position: absolute;
+            top: 2.5cm;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            position: absolute;
+            background: rgba(89, 131, 83, 0.09);
+            backdrop-filter: blur(2px);
+            border-radius: 1em;
+
+            transition: transform 0.8s;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            backdrop-filter: blur(20px);
+        }
+
+        tr:hover {
+            backdrop-filter: blur(10px);
+        }
+
+        p {
+            color: #000;
+        }
+
+        .loader-wrapper {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+        }
+
+        .loader-wrapper {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>
+        <p>This website requires JavaScript to be enabled for full functionality.</p>
+    </noscript>
+
+    <div id="funnyWarningModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div class="modal-content">
+            <h2>Warning!</h2>
+            <p>You've been caught trying to use the inspect tool!</p>
+            <p>But don't worry, we're just playing a prank. You can keep using the site. Just remember, no inspecting!
+            </p>
+            <button class="btn btn-outline-dark" onclick="closeModal()" id="closeModal">Close</button>
+        </div>
+    </div>
+
+
+    <div id="funnyWarningModalRightClick"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div class="modal-content">
+            <h2>Warning!</h2>
+            <p>You've been caught trying to use the right click!</p>
+            <p>But don't worry, we're just playing a prank. You can keep using the site. Just remember, no right
+                clicking!
+            </p>
+            <button class="btn btn-outline-dark" onclick="closeModalRightClick()" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <div class="container1">
+
+
+        <img id="headerLogo" src="{%static 'images/headerLogo.png'%}" alt="">
+
+        <h2>Registrations</h2>
+
+        {% if register %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>College</th>
+                    <th>File</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for register in register %}
+                <tr>
+                    <td>1.{{ register.leaderName }}(First Author)<br><br>
+                        2.{{ register.member1 }}<br><br>
+                        3.{{ register.member2 }}<br><br>
+                        4.{{ register.member3 }}<br>
+                    </td>
+                    <td>1.{{ register.designation1 }}<br><br>
+                        2.{{ register.designation2 }}<br><br>
+                        3.{{ register.designation3 }}<br><br>
+                        4.{{ register.designation4 }}<br>
+                    </td>
+                    <td>{{ register.mobileNumber }}</td>
+                    <td>{{ register.email }}</td>
+
+                    <td>{{ register.college }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{{ register.uploaded_file.url }}"
+                            download="{{ register.leaderName }}">
+                            Download File
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No registers available.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
